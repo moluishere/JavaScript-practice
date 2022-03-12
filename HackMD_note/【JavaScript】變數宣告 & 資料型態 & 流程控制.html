@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        【JavaScript】變數宣告 &amp; 資料型態 &amp; 流程控制 - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit;overflow:visible}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.figma{display:table;position:relative;width:100%;padding-bottom:56.25%}.figma iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;border:1px solid #eee}.markmap-container{height:300px}.markmap-container>svg{width:100%;height:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{height:40px;padding:10px 4px;border-top-left-radius:0;border-bottom-left-radius:0}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:20px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:50%;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;text-decoration:none;padding-left:22px}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em;font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-inner comment-enabled" data-hard-breaks="true"><h1 id="【JavaScript】變數宣告-amp-資料型態-amp-流程控制" data-id="【JavaScript】變數宣告-amp-資料型態-amp-流程控制"><a class="anchor hidden-xs" href="#【JavaScript】變數宣告-amp-資料型態-amp-流程控制" title="【JavaScript】變數宣告-amp-資料型態-amp-流程控制"><span class="octicon octicon-link"></span></a><span>【JavaScript】變數宣告 &amp; 資料型態 &amp; 流程控制</span></h1><ul>
+<li><span>HTML：結構</span></li>
+<li><span>CSS：樣式</span></li>
+<li><span>Javascript：行為</span></li>
+</ul><h2 id="JavaScript-與-ES6" data-id="JavaScript-與-ES6"><a class="anchor hidden-xs" href="#JavaScript-與-ES6" title="JavaScript-與-ES6"><span class="octicon octicon-link"></span></a><span>JavaScript 與 ES6</span></h2><ul>
+<li>
+<p><span>淵源</span></p>
+<ul>
+<li><span>ECMA</span></li>
+<li><span>TC39</span></li>
+<li><span>ES6 = ECMAScript6</span></li>
+</ul>
+</li>
+<li>
+<p><span>為什麼不直接學最新的的版本？</span></p>
+<ul>
+<li><span>瀏覽器不支援；</span></li>
+<li><span>檢查瀏覽器是否支援該語法：</span><a href="https://caniuse.com/" target="_blank" rel="noopener"><span>https://caniuse.com/</span></a></li>
+</ul>
+</li>
+<li>
+<p><span>相關外掛</span></p>
+<ul>
+<li><span>babel JavaScript</span></li>
+<li><span>Prettier</span></li>
+<li><span>Prettier - Code formatter</span></li>
+<li><span>live server</span></li>
+</ul>
+</li>
+<li>
+<p><span>JavaScript 撰寫位置</span><br>
+<span>我們可以將JavaScript程式碼放在html檔案中任何位置，但是我們一般放在網頁的head或者body部分（建議放在body最後）。另一種方式是將JavaScript程式獨立寫成別的檔案，不直接和HTML檔案寫在一起。</span></p>
+<ul>
+<li><span>外部引入：慣例上放在</span><code>&lt;/body&gt;</code><span>標籤前，避免載入發生問題</span><pre><code class="html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"app.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</li>
+<li><code>&lt;head&gt;</code><span>、</span><code>&lt;body&gt;</code><span>：比較不推薦的方式</span><pre><code class="html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span>在此處撰寫<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><span>註解方式</span></p>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"> <span class="token comment">//單行註解</span>
+
+ <span class="token comment">/*
+ 多行註解
+ 多行註解
+ 多行註解
+ */</span>
+</div></div></code></pre>
+</li>
+</ul><h2 id="變數-variable" data-id="變數-variable"><a class="anchor hidden-xs" href="#變數-variable" title="變數-variable"><span class="octicon octicon-link"></span></a><span>變數 variable</span></h2><ul>
+<li>
+<p><span>為什麼需要變數？</span></p>
+<ul>
+<li><span>變數的功能是用來輸入、處理及儲存外界的資料，而變數在使用以前均要事先宣告才可使用。可以想像變數為存放資料的一個標籤，我們將資料指定給變數，就可以透過呼叫變數來使用資料。</span></li>
+<li><span>想的簡單一點，我們需要給資料一個名字，才能去使用那個資料。</span></li>
+</ul>
+</li>
+<li>
+<p><span>命名原則</span></p>
+<ul>
+<li><span>可使用英文字母或數字，但第一個字母不可以用數字</span></li>
+<li><span>不能使用保留字</span></li>
+<li><span>注意大小寫</span></li>
+</ul>
+</li>
+<li>
+<p><span>宣告 vs 未宣告</span></p>
+<ul>
+<li>
+<p><span>未宣告：</span><code>ReferenceError: age is not defined</code></p>
+<pre><code class="JavaScript hljs">console.log(age);
+</code></pre>
+</li>
+<li>
+<p><span>已宣告未定義：</span><code>undefined</code></p>
+<pre><code class="JavaScript hljs"><span class="hljs-keyword">var</span> age;
+console.log(age);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><span>變數提升</span></p>
+<ul>
+<li><span>Var 變數宣告會有提升</span></li>
+<li><span>使用 var 宣告</span></li>
+</ul>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined </span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//123</span>
+</div></div></code></pre>
+<ul>
+<li><span>使用 let 宣告</span></li>
+</ul>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Uncaught ReferenceError: Cannot access 'age' before initialization</span>
+
+</div></div></code></pre>
+</li>
+</ul><h2 id="常數-const" data-id="常數-const"><a class="anchor hidden-xs" href="#常數-const" title="常數-const"><span class="octicon octicon-link"></span></a><span>常數 const</span></h2><ul>
+<li>
+<p><span>常數不能再指定（re-assign）</span></p>
+<pre><code class="javascript hljs"><span class="token keyword">const</span> <span class="token constant">AGE</span> <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token constant">AGE</span> <span class="token operator">=</span> <span class="token number">456</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">AGE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// TypeError: Assignment to constant variable.</span>
+</code></pre>
+</li>
+<li>
+<p><strong><span>再指定</span></strong><span>不是指值的更改，而是盒子（記憶體地址）的更改</span></p>
+<ul>
+<li><span>指向的盒子沒有更改，順利執行：</span></li>
+</ul>
+<pre><code class="javascript hljs"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+x<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 印出 [ 1, 2, 3, 4 ]</span>
+</code></pre>
+<pre><code class="javascript hljs"><span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"Mary"</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+y<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Peter"</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 印出{ name: 'Peter', age: 30 }</span>
+</code></pre>
+<ul>
+<li><span>指向的盒子re-asign，噴錯：</span></li>
+</ul>
+<pre><code class="javascript hljs"><span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span>
+<span class="token comment">//Uncaught TypeError: Assignment to constant variable.</span>
+</code></pre>
+<pre><code class="javascript hljs"><span class="token keyword">const</span> y <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'Mary'</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">}</span>
+y <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'Peter'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//Uncaught TypeError: Assignment to constant variable.</span>
+</code></pre>
+</li>
+<li>
+<p><span>修改 vs 賦值</span></p>
+<ul>
+<li><span>下面的例子，第 7 行 a 修改了值（記憶體／盒子沒變），第 10 行的 b 指向的是修改了值的 a</span></li>
+</ul>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> a<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ 1, 2, 3 ]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ 1, 2, 3 ]</span>
+
+a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ 10, 2, 3 ]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ 10, 2, 3 ]</span>
+</div></div></code></pre>
+<ul>
+<li><span>下面的例子，第 7 行 a 已經重新賦值（記憶體／盒子被更改了），b 指向的仍是一開始宣告的 a</span></li>
+</ul>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> a<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 123</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 123</span>
+
+a <span class="token operator">=</span> <span class="token number">456</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 123</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 456</span>
+
+</div></div></code></pre>
+</li>
+</ul><h2 id="什麼時候用-let-const-var" data-id="什麼時候用-let-const-var"><a class="anchor hidden-xs" href="#什麼時候用-let-const-var" title="什麼時候用-let-const-var"><span class="octicon octicon-link"></span></a><span>什麼時候用 let, const, var</span></h2><h2 id="資料型態" data-id="資料型態"><a class="anchor hidden-xs" href="#資料型態" title="資料型態"><span class="octicon octicon-link"></span></a><span>資料型態</span></h2><ul>
+<li><span>變數本身沒有型態</span></li>
+</ul><h3 id="原始型別" data-id="原始型別"><a class="anchor hidden-xs" href="#原始型別" title="原始型別"><span class="octicon octicon-link"></span></a><span>原始型別</span></h3><p><span>數字 字串 布林值</span><br>
+<span>空值 未定義 符號</span></p><h3 id="物件型別" data-id="物件型別"><a class="anchor hidden-xs" href="#物件型別" title="物件型別"><span class="octicon octicon-link"></span></a><span>物件型別</span></h3><p><span>陣列 函式 物件</span></p><h3 id="型別判斷" data-id="型別判斷"><a class="anchor hidden-xs" href="#型別判斷" title="型別判斷"><span class="octicon octicon-link"></span></a><span>型別判斷</span></h3><ul>
+<li><span>typeof</span></li>
+</ul><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// number</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// string</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// boolean</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// object</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// object -&gt; 設計上的 bug</span>
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">typeof</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>　<span class="token comment">// string</span>
+</div></div></code></pre><h2 id="資料運算" data-id="資料運算"><a class="anchor hidden-xs" href="#資料運算" title="資料運算"><span class="octicon octicon-link"></span></a><span>資料運算</span></h2><h3 id="a-與-a" data-id="a-與-a"><a class="anchor hidden-xs" href="#a-與-a" title="a-與-a"><span class="octicon octicon-link"></span></a><span>a++ 與 ++a</span></h3><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+a <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// a = a + 1 </span>
+<span class="token comment">// 可簡寫成 a++ （先丟a再遞增）</span>
+<span class="token comment">// ++a（先遞增再丟a）</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1 ; 這行的 a++ 先把 a 丟出去</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2 ; 這行的 a 遞增</span>
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">++</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+a <span class="token operator">=</span> <span class="token operator">++</span>a <span class="token operator">+</span> a<span class="token operator">++</span> <span class="token operator">+</span> a<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 7</span>
+</div></div></code></pre><h3 id="字串運算" data-id="字串運算"><a class="anchor hidden-xs" href="#字串運算" title="字串運算"><span class="octicon octicon-link"></span></a><span>字串運算</span></h3><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> username <span class="token operator">=</span> <span class="token string">"Yvonne"</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"My name is"</span> <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> username <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> <span class="token string">",and I am 18 years old"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">My name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>username<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, and I am 18 years old</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// My name is Yvonne, and I am 18 years old</span>
+</div></div></code></pre><h3 id="真假值／布林值-Boolean" data-id="真假值／布林值-Boolean"><a class="anchor hidden-xs" href="#真假值／布林值-Boolean" title="真假值／布林值-Boolean"><span class="octicon octicon-link"></span></a><span>真假值／布林值 Boolean</span></h3><ul>
+<li><span>只有兩種結果：</span><code>true</code><span> or </span><code>false</code></li>
+</ul><h3 id="不同型別之間的轉換" data-id="不同型別之間的轉換"><a class="anchor hidden-xs" href="#不同型別之間的轉換" title="不同型別之間的轉換"><span class="octicon octicon-link"></span></a><span>不同型別之間的轉換</span></h3><ul>
+<li>
+<p><span>型別轉換的函式</span></p>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span> <span class="token comment">// 123</span>
+<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "123"</span>
+<span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token string">"456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 456</span>
+<span class="token keyword">let</span> d <span class="token operator">=</span> <span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false </span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</div></div></code></pre>
+<ul>
+<li>
+<p><span>在 JavaScript 中會被轉為 false 的值有：</span></p>
+<ul>
+<li><code>""</code><span> 空字串</span></li>
+<li><code>0</code><span>,</span><code>-0</code><span>, </span><code>NaN</code></li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+<li><code>false</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p><span>而除了以上的值之外，都會被轉為 true，舉例如下</span></p>
+<ul>
+<li><code>"Hello World"</code><span> 非空字串</span></li>
+<li><code>42</code><span> 非零的有效數字</span></li>
+<li><code>[]</code><span>, </span><code>[1, 2, 3]</code><span> 陣列，不管是不是空的</span></li>
+<li><code>{}</code><span>, </span><code>{ name: 'Jack' }</code><span> 物件，不管是不是空的</span></li>
+<li><code>function foo() {}</code><span> 函式</span></li>
+<li><code>true</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span>NaN</span></p>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token string">"ccc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaN = Not a number</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// number</span>
+</div></div></code></pre>
+<ul>
+<li><span>NaN 本身也是 number 的一員，但它不等於任何人，包括它自己</span></li>
+<li><span>NaN 的可以使用內建的 isNaN() 函數來判斷</span></li>
+</ul>
+</li>
+<li>
+<p><span>強迫轉型 Type Coercion</span></p>
+<p><span>在 JavaScript 中的資料型別是動態的，若沒有給定變數的型別，JavaScript 會進行判斷，而強制轉型，例如有用到運算子，JavaScript 就會覺得你是要讓值變成數字進行運算，因此就會將運算子左右的值強制轉型為數字。</span><br>
+<span>JavaScript 中的強制轉型（coercion）分為兩種，分別是「顯性轉型」（explicit coercion）及「隱性轉型」（implicit coercion）。</span></p>
+</li>
+</ul><h2 id="流程控制-判斷式" data-id="流程控制-判斷式"><a class="anchor hidden-xs" href="#流程控制-判斷式" title="流程控制-判斷式"><span class="octicon octicon-link"></span></a><span>流程控制 判斷式</span></h2><h3 id="ifelse" data-id="ifelse"><a class="anchor hidden-xs" href="#ifelse" title="ifelse"><span class="octicon octicon-link"></span></a><code>if...else</code></h3><pre><code class="javascript hljs"><span class="token keyword">if</span> <span class="token punctuation">(</span> 條件式 <span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// 某條件成立會執行這個 { } 區塊中的內容</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span><span class="token punctuation">{</span>
+  <span class="token comment">// 否則執行 else 這個 { } 區塊中的內容</span>
+  <span class="token comment">// else 可以有也可以沒有</span>
+<span class="token punctuation">}</span>
+</code></pre><pre><code class="javascript hljs"><span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">18</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"已成年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><pre><code class="javascript hljs"><span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">18</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"已成年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"未成年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 印出 已成年</span>
+</code></pre><h3 id="三元運算子" data-id="三元運算子"><a class="anchor hidden-xs" href="#三元運算子" title="三元運算子"><span class="octicon octicon-link"></span></a><span>三元運算子</span></h3><ul>
+<li><span>下述例子的 2 行的程式碼，等同於上面例子 5 行的程式碼</span></li>
+<li><span>注意程式碼的可讀性，</span><code>if...else</code><span> 相對容易閱讀，除非你很習慣三元運算子的寫法，不然還是選if…else`</span></li>
+</ul><pre><code class="javascript hljs"><span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+age <span class="token operator">&gt;=</span> <span class="token number">18</span> <span class="token operator">?</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"已成年"</span><span class="token punctuation">)</span> <span class="token operator">:</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"未成年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 印出 已成年</span>
+</code></pre><h3 id="注意等號" data-id="注意等號"><a class="anchor hidden-xs" href="#注意等號" title="注意等號"><span class="octicon octicon-link"></span></a><span>注意等號</span></h3><p><span>條件判斷</span></p><h3 id="else-if-" data-id="else-if-"><a class="anchor hidden-xs" href="#else-if-" title="else-if-"><span class="octicon octicon-link"></span></a><code>else if </code></h3><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">if</span> <span class="token punctuation">(</span> 條件式 <span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// 某條件成立會執行這個 { } 區塊中的內容</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span> 條件式<span class="token number">2</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span> 條件式<span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span> 條件式<span class="token number">4</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span><span class="token punctuation">{</span>
+  <span class="token comment">// 若上面所有條件判斷都是 false ，才會執行 else 這個 { } 區塊中的內容</span>
+
+<span class="token punctuation">}</span>
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">18</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"已成年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">12</span> <span class="token operator">&amp;&amp;</span> age <span class="token operator">&lt;=</span> <span class="token number">18</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"青少年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"未成年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="Switch" data-id="Switch"><a class="anchor hidden-xs" href="#Switch" title="Switch"><span class="octicon octicon-link"></span></a><code>Switch</code></h3><p><span>switch 的用法就是要告訴你，符合哪樣就請跑出相對應結果。</span><br>
+<span>再用 case 去分類其結果，並在尾巴加上 </span><code>break</code><span>，表示一個結果的結束，但還有下一種可能。在視覺上比較有架構的整理，當流程很多的時候，用有架構整理會較易閱讀。</span></p><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> gender <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token keyword">switch</span> <span class="token punctuation">(</span>gender<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"男"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"女"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">default</span><span class="token operator">:</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"不想說"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 印出 不想說</span>
+</div></div></code></pre><h3 id="運算子" data-id="運算子"><a class="anchor hidden-xs" href="#運算子" title="運算子"><span class="octicon octicon-link"></span></a><span>運算子</span></h3><h4 id="算術運算子" data-id="算術運算子"><a class="anchor hidden-xs" href="#算術運算子" title="算術運算子"><span class="octicon octicon-link"></span></a><span>算術運算子</span></h4><p><img src="https://ithelp.ithome.com.tw/upload/images/20200904/2012948823yBEtBA4y.png" alt="https://ithelp.ithome.com.tw/upload/images/20200904/2012948823yBEtBA4y.png" loading="lazy"></p><h4 id="指派運算子" data-id="指派運算子"><a class="anchor hidden-xs" href="#指派運算子" title="指派運算子"><span class="octicon octicon-link"></span></a><span>指派運算子</span></h4><p><img src="https://ithelp.ithome.com.tw/upload/images/20200904/20129488BLYkWEyMfv.png" alt="https://ithelp.ithome.com.tw/upload/images/20200904/20129488BLYkWEyMfv.png" loading="lazy"></p><h4 id="比較運算子" data-id="比較運算子"><a class="anchor hidden-xs" href="#比較運算子" title="比較運算子"><span class="octicon octicon-link"></span></a><span>比較運算子</span></h4><p><img src="https://ithelp.ithome.com.tw/upload/images/20200904/20129488BLYkWEyMfv.png" alt="https://ithelp.ithome.com.tw/upload/images/20200904/20129488BLYkWEyMfv.png" loading="lazy"></p><h4 id="邏輯運算子" data-id="邏輯運算子"><a class="anchor hidden-xs" href="#邏輯運算子" title="邏輯運算子"><span class="octicon octicon-link"></span></a><span>邏輯運算子</span></h4><p><img src="https://ithelp.ithome.com.tw/upload/images/20200904/201294884SJWQ2ji9J.png" alt="https://ithelp.ithome.com.tw/upload/images/20200904/201294884SJWQ2ji9J.png" loading="lazy"></p><h3 id="【練習題】" data-id="【練習題】"><a class="anchor hidden-xs" href="#【練習題】" title="【練習題】"><span class="octicon octicon-link"></span></a><span>【練習題】</span></h3><p><span>閏年判斷</span></p><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">let</span> year <span class="token operator">=</span> <span class="token function">prompt</span><span class="token punctuation">(</span><span class="token string">"請輸入年份"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>year<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>year <span class="token operator">%</span> <span class="token number">4</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> year <span class="token operator">%</span> <span class="token number">100</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> year <span class="token operator">%</span> <span class="token number">400</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>year <span class="token operator">+</span> <span class="token string">"是閏年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>year <span class="token operator">+</span> <span class="token string">"不是閏年"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h2 id="流程控制-迴圈" data-id="流程控制-迴圈"><a class="anchor hidden-xs" href="#流程控制-迴圈" title="流程控制-迴圈"><span class="octicon octicon-link"></span></a><span>流程控制 迴圈</span></h2><h3 id="for-迴圈" data-id="for-迴圈"><a class="anchor hidden-xs" href="#for-迴圈" title="for-迴圈"><span class="octicon octicon-link"></span></a><span>for 迴圈</span></h3><ul>
+<li>
+<p><span>用法： for ( 起始條件; 終止條件; 每一圈的改變 ) { 每一圈要做的事情 }</span></p>
+</li>
+<li>
+<p><span>範例：</span></p>
+</li>
+</ul><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><ul>
+<li><span>練習題：</span><br>
+<span>起始條件是 i = 1，終止條件是 i &lt;= 100，每一圈的改變是 i = i+1</span><br>
+<span>符合條件就會執行 { } 裡面的事情。</span></li>
+</ul><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// 印出 1 ~ 10</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> a <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> a <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// 印出 20 以內的 雙數，倒著印</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> a <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> a <span class="token operator">=</span> a <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><h3 id="while-迴圈" data-id="while-迴圈"><a class="anchor hidden-xs" href="#while-迴圈" title="while-迴圈"><span class="octicon octicon-link"></span></a><span>while 迴圈</span></h3><pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="token comment">// whilt 的條件滿足時，執行 { } 裡面的動作。</span>
+
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    i<span class="token operator">++</span>
+<span class="token punctuation">}</span>
+</div></div></code></pre><ol>
+<li><span>一開始宣告一個變數 i = 1</span></li>
+<li><span>判斷是否符合 while 的條件，i = 1 有符合條件</span></li>
+<li><span>執行 { } 裡面的動作：console.log 印出 i 之後，再把 i + 1</span></li>
+<li><span>再判斷一次是否符合 while 的條件，i = 2 有符合條件</span></li>
+<li><span>再繼續執行 { } 裡面的動作</span></li>
+<li><span>直到不符合條件為止</span></li>
+</ol><ul>
+<li><span>補充：</span>
+<ul>
+<li><code>continue</code><span> 可以跳過這圈未完成的動作，直接進到下一圈迴圈</span></li>
+<li><code> break</code><span> 可以強制跳出迴圈</span></li>
+</ul>
+</li>
+</ul><h3 id="練習題" data-id="練習題"><a class="anchor hidden-xs" href="#練習題" title="練習題"><span class="octicon octicon-link"></span></a><span>練習題</span></h3><p><a href="https://%5D(https://medium.com/@moluishere/javascript-%E5%8D%B0%E5%87%BA%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8-%E4%B8%89%E8%A7%92%E5%BD%A2-%E7%AD%86%E8%A8%98%E6%AC%84%E7%9B%AE-f436e8e2049d)" target="_blank" rel="noopener"><span>解法筆記</span></a><br>
+<img src="https://i.imgur.com/4njwxn8.png" alt="" loading="lazy"></p><p><img src="https://i.imgur.com/PV4ugZc.png" alt="" loading="lazy"></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#【JavaScript】變數宣告-amp-資料型態-amp-流程控制" title="【JavaScript】變數宣告 &amp; 資料型態 &amp; 流程控制">【JavaScript】變數宣告 &amp; 資料型態 &amp; 流程控制</a><ul class="nav">
+<li class=""><a href="#JavaScript-與-ES6" title="JavaScript 與 ES6">JavaScript 與 ES6</a></li>
+<li class=""><a href="#變數-variable" title="變數 variable">變數 variable</a></li>
+<li class=""><a href="#常數-const" title="常數 const">常數 const</a></li>
+<li class=""><a href="#什麼時候用-let-const-var" title="什麼時候用 let, const, var">什麼時候用 let, const, var</a></li>
+<li class=""><a href="#資料型態" title="資料型態">資料型態</a><ul class="nav">
+<li class=""><a href="#原始型別" title="原始型別">原始型別</a></li>
+<li class=""><a href="#物件型別" title="物件型別">物件型別</a></li>
+<li class=""><a href="#型別判斷" title="型別判斷">型別判斷</a></li>
+</ul>
+</li>
+<li class=""><a href="#資料運算" title="資料運算">資料運算</a><ul class="nav">
+<li class=""><a href="#a-與-a" title="a++ 與 ++a">a++ 與 ++a</a></li>
+<li class=""><a href="#字串運算" title="字串運算">字串運算</a></li>
+<li class=""><a href="#真假值／布林值-Boolean" title="真假值／布林值 Boolean">真假值／布林值 Boolean</a></li>
+<li class=""><a href="#不同型別之間的轉換" title="不同型別之間的轉換">不同型別之間的轉換</a></li>
+</ul>
+</li>
+<li class=""><a href="#流程控制-判斷式" title="流程控制 判斷式">流程控制 判斷式</a><ul class="nav">
+<li class=""><a href="#ifelse" title="if...else">if...else</a></li>
+<li class=""><a href="#三元運算子" title="三元運算子">三元運算子</a></li>
+<li class=""><a href="#注意等號" title="注意等號">注意等號</a></li>
+<li class=""><a href="#else-if-" title="else if ">else if </a></li>
+<li class=""><a href="#Switch" title="Switch">Switch</a></li>
+<li class=""><a href="#運算子" title="運算子">運算子</a></li>
+<li class=""><a href="#【練習題】" title="【練習題】">【練習題】</a></li>
+</ul>
+</li>
+<li class=""><a href="#流程控制-迴圈" title="流程控制 迴圈">流程控制 迴圈</a><ul class="nav">
+<li class=""><a href="#for-迴圈" title="for 迴圈">for 迴圈</a></li>
+<li class=""><a href="#while-迴圈" title="while 迴圈">while 迴圈</a></li>
+<li class=""><a href="#練習題" title="練習題">練習題</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#【JavaScript】變數宣告-amp-資料型態-amp-流程控制" title="【JavaScript】變數宣告 &amp; 資料型態 &amp; 流程控制">【JavaScript】變數宣告 &amp; 資料型態 &amp; 流程控制</a><ul class="nav">
+<li class=""><a href="#JavaScript-與-ES6" title="JavaScript 與 ES6">JavaScript 與 ES6</a></li>
+<li class=""><a href="#變數-variable" title="變數 variable">變數 variable</a></li>
+<li class=""><a href="#常數-const" title="常數 const">常數 const</a></li>
+<li class=""><a href="#什麼時候用-let-const-var" title="什麼時候用 let, const, var">什麼時候用 let, const, var</a></li>
+<li class=""><a href="#資料型態" title="資料型態">資料型態</a><ul class="nav">
+<li class=""><a href="#原始型別" title="原始型別">原始型別</a></li>
+<li class=""><a href="#物件型別" title="物件型別">物件型別</a></li>
+<li class=""><a href="#型別判斷" title="型別判斷">型別判斷</a></li>
+</ul>
+</li>
+<li class=""><a href="#資料運算" title="資料運算">資料運算</a><ul class="nav">
+<li class=""><a href="#a-與-a" title="a++ 與 ++a">a++ 與 ++a</a></li>
+<li class=""><a href="#字串運算" title="字串運算">字串運算</a></li>
+<li class=""><a href="#真假值／布林值-Boolean" title="真假值／布林值 Boolean">真假值／布林值 Boolean</a></li>
+<li class=""><a href="#不同型別之間的轉換" title="不同型別之間的轉換">不同型別之間的轉換</a></li>
+</ul>
+</li>
+<li class=""><a href="#流程控制-判斷式" title="流程控制 判斷式">流程控制 判斷式</a><ul class="nav">
+<li class=""><a href="#ifelse" title="if...else">if...else</a></li>
+<li class=""><a href="#三元運算子" title="三元運算子">三元運算子</a></li>
+<li class=""><a href="#注意等號" title="注意等號">注意等號</a></li>
+<li class=""><a href="#else-if-" title="else if ">else if </a></li>
+<li class=""><a href="#Switch" title="Switch">Switch</a></li>
+<li class=""><a href="#運算子" title="運算子">運算子</a></li>
+<li class=""><a href="#【練習題】" title="【練習題】">【練習題】</a></li>
+</ul>
+</li>
+<li class=""><a href="#流程控制-迴圈" title="流程控制 迴圈">流程控制 迴圈</a><ul class="nav">
+<li class=""><a href="#for-迴圈" title="for 迴圈">for 迴圈</a></li>
+<li class=""><a href="#while-迴圈" title="while 迴圈">while 迴圈</a></li>
+<li class=""><a href="#練習題" title="練習題">練習題</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>

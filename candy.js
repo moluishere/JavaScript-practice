@@ -45,3 +45,4 @@ function lostWord(list) {
 // fromCharCode(index) 可返回指定的 Unicode 值位置的編碼
 console.log(lostWord(list1));
 console.log(lostWord(list2));
+
