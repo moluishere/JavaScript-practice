@@ -44,17 +44,17 @@
 //   console.log("點了");
 // });
 
-// JavaScript 位置 載入衝突解法：
-// (1)放在body前 (2)加入監聽器 DOMContentLoade
-// (3) <script>加入 defer，比較晚執行：<script src="app.js" defer></script>
-document.addEventListener("DOMContentLoaded", function () {
-  const h = document.querySelector("#hello");
-  console.log(h);
-  h.addEventListener("click", function () {
-    //監聽的事件, function
-    console.log("點了");
-  });
-});
+// // JavaScript 位置 載入衝突解法：
+// // (1)放在body前 (2)加入監聽器 DOMContentLoade
+// // (3) <script>加入 defer，比較晚執行：<script src="app.js" defer></script>
+// document.addEventListener("DOMContentLoaded", function () {
+//   const h = document.querySelector("#hello");
+//   console.log(h);
+//   h.addEventListener("click", function () {
+//     //監聽的事件, function
+//     console.log("點了");
+//   });
+// });
 
 // 高階函數(式) higher-order funtion
 // 1. 接別的函數當參數/引數 EX: map(), forEach()
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //   return b;
 // }
 
-// //
+//
 // const cc = a();
 // console.log(cc); // 呼叫 a 函式，得到回傳值 b 函式
 // // ƒ b() {
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // h.addEventListener("click", hey);
 
-// // fn 在 JS ，是「一等公民」：函式在 JavaScript 可以當作一般的值，唯一不同的地方是能夠被控制
+// // fn 在 JS ，是「一等公民」：函式在 JavaScript 可以當作一般的值，唯一不同的地方是能夠被呼叫
 // // 事件監聽，可以加很多個
 // const btn = document.querySelector("#btn");
 
@@ -115,18 +115,18 @@ document.addEventListener("DOMContentLoaded", function () {
 //   console.log(456); // 印出 456
 // };
 
-// 侵入式 與 預設行為
-// 超連結有預設行為：換頁
+// // 侵入式 與 預設行為
+// // 超連結有預設行為：換頁
 
-const ln = document.querySelector("#link");
-const btn = document.querySelector("#btn");
+// const ln = document.querySelector("#link");
+// const btn = document.querySelector("#btn");
 
-ln.addEventListener("click", function (e) {
-  e.preventDefault();
-  console.log("hi");
-});
+// ln.addEventListener("click", function (e) {
+//   e.preventDefault();
+//   console.log("hi");
+// });
 
-document.addEventListener("contextmenu", (e) => {
-  e.preventDefault(); // 取消右鍵行為
-  console.log(123);
-});
+// document.addEventListener("contextmenu", (e) => {
+//   e.preventDefault(); // 取消右鍵行為
+//   console.log(123);
+// });
