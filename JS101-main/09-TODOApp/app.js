@@ -1,26 +1,23 @@
 // 鍵盤事件 enter(keycode 13 = Enter)：按 enter 新增
 // click 事件：點選 ddBtn 新增，點選 closeBtn 刪除
 
-// 新增 ul 節點，放在 main(todo-app) 最下面，掛上 class "todo-list"
 const ul = document.createElement("ul")
-ul.setAttribute("class", "todo-list")
-document.querySelector(".todo-app").appendChild(ul)
+ul.classList.add("todo-list")
 
-// 建立一個事件發生後，後長出 list 的函式，新輸入的值要在前面
-// 輸入後要讓輸入欄為空
 function addNewList() {
-  // 先抓輸入的值，建立 li 節點，掛上class(todo-item)，帶入輸入值跟樣式，放入 ul
-  const inputValue = document.querySelector("#taskInput").value
+  document.querySelector(".todo-app").appendChild(ul)
   const li = document.createElement("li")
-  li.setAttribute("class", "todo-item") // 或是 li.classList.add("todo-item")
-  li.innerHTML = `
+  li.classList.add("todo-item")
+  const inputValue = document.querySelector("#taskInput").value
+  if (inputValue == null) {
+    alert("寫資料啊")
+  } else {
+    li.innerHTML = `
   <span class="item">${inputValue}</span>
   <button class="closeBtn">X</button>`
-  ul.insertAdjacentElement("afterbegin", li)
-  // 完成新增後，清空輸入欄的資料
-  document.querySelector("#taskInput").value = " "
-
-  // 點擊 button (closeBtn) -> 刪除資料
+    ul.insertAdjacentElement("afterbegin", li)
+    document.querySelector("#taskInput").value = " "
+  }
   const close = document.querySelector(".closeBtn")
   close.addEventListener("click", () => {
     li.remove()
@@ -40,16 +37,3 @@ enter.addEventListener("keypress", (e) => {
     addNewList()
   }
 })
-
-/* <section>
-<ul class="todo-list">
-  <li class="todo-item">
-    <span class="item">待辦事項1</span>
-    <button class="closeBtn">X</button>
-  </li>
-  <li class="todo-item">
-    <span class="item">待辦事項2</span>
-    <button class="closeBtn">X</button>
-  </li>
-</ul>
-</section> */
