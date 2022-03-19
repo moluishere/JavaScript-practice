@@ -8,12 +8,11 @@ document.querySelector(".todo-app").appendChild(ul)
 
 // 建立一個事件發生後，後長出 list 的函式，新輸入的值要在前面
 // 輸入後要讓輸入欄為空
-// 把刪除的函式也寫進去，才能抓到在該FN內動態生成的標籤
 function addNewList() {
   // 先抓輸入的值，建立 li 節點，掛上class(todo-item)，帶入輸入值跟樣式，放入 ul
   const inputValue = document.querySelector("#taskInput").value
   const li = document.createElement("li")
-  li.setAttribute("class", "todo-item")
+  li.setAttribute("class", "todo-item") // 或是 li.classList.add("todo-item")
   li.innerHTML = `
   <span class="item">${inputValue}</span>
   <button class="closeBtn">X</button>`
@@ -24,10 +23,7 @@ function addNewList() {
   // 點擊 button (closeBtn) -> 刪除資料
   const close = document.querySelector(".closeBtn")
   close.addEventListener("click", () => {
-    const removeList = document.querySelector(".todo-item")
-    // if (removeList) {
-    removeList.remove()
-    // }
+    li.remove()
   })
 }
 
