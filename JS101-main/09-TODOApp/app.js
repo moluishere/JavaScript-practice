@@ -9,7 +9,7 @@ function addNewList() {
   const li = document.createElement("li")
   li.classList.add("todo-item")
   const inputValue = document.querySelector("#taskInput").value
-  if (inputValue == null) {
+  if (inputValue.trim().length === 0) {
     alert("寫資料啊")
   } else {
     li.innerHTML = `
