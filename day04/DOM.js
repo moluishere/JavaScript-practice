@@ -11,10 +11,7 @@ const btn = document.querySelector("#btn");
 
 btn.addEventListener("click", () => {
   const lastOne = document.querySelector("#list :last-child");
-  //   console.log(123);
-  if (lastOne) {
-    lastOne.remove();
-  }
+  lastOne.remove();
 });
 
 // 取得上層DOM

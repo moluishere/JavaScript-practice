@@ -15,6 +15,7 @@ ul {
 
 li {
   margin-left: 0px;
+  list-style: none; /*移除lis樣式t*/
 }
 
 li.todo-item {
@@ -25,7 +26,6 @@ li.todo-item {
   padding: 15px 10px;
   border-bottom: 1px solid lightgray;
   font-weight: 200;
-  color: ;
 }
 
 .item {

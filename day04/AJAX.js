@@ -28,24 +28,24 @@ async function getUsers() {
 
 getUsers();
 
-// //原生請求
-// const API = "https://jsonplaceholder.typicode.com/users";
+//原生請求
+const API = "https://jsonplaceholder.typicode.com/users";
 
-// const req = new XMLHttpRequest();
-// req.addEventListener("load", () => {
-//   const ul = document.createElement("ul");
+const req = new XMLHttpRequest();
+req.addEventListener("load", () => {
+  const ul = document.createElement("ul");
 
-//   let users = JSON.parse(req.responseText);
-//   users.forEach((user) => {
-//     const li = document.createElement("li");
-//     li.textContent = user.name;
-//     ul.appendChild(li);
-//   });
-//   document.querySelector("body").appendChild(ul);
-// });
+  let users = JSON.parse(req.responseText);
+  users.forEach((user) => {
+    const li = document.createElement("li");
+    li.textContent = user.name;
+    ul.appendChild(li);
+  });
+  document.querySelector("body").appendChild(ul);
+});
 
-// req.open("GET", API);
+req.open("GET", API);
 
-// req.send();
+req.send();
 
 
