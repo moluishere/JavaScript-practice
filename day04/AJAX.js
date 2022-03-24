@@ -1,20 +1,20 @@
-// // fetch方法
-// const API = "https://jsonplaceholder.typicode.com/users";
+// fetch方法
+const API = "https://jsonplaceholder.typicode.com/users";
 
-// fetch(API)
-//   .then((resp) => {
-//     // then 可以當成一個符合條件的監聽器
-//     // promise 物件 預設有三個狀態；一開始為 pending，並發展成 fulfilled 以及 reject 狀態
-//     return resp.json(); // 回傳解完結果，仍是 promise
-//   })
+fetch(API)
+  .then((resp) => {
+    // then 可以當成一個符合條件的監聽器
+    // promise 物件 預設有三個狀態；一開始為 pending，並發展成 fulfilled 以及 reject 狀態
+    return resp.json(); // 回傳解完結果，仍是 promise
+  })
 
-//   .then((data) => {
-//     console.log(data); // 確定解完才印出來
-//   })
+  .then((data) => {
+    console.log(data); // 確定解完才印出來
+  })
 
-//   .catch((err) => {
-//     console.log(err);
-//   });
+  .catch((err) => {
+    console.log(err);
+  });
 
 // async & await 寫法
 const API = "https://jsonplaceholder.typicode.com/users";
@@ -47,5 +47,3 @@ req.addEventListener("load", () => {
 req.open("GET", API);
 
 req.send();
-
-
