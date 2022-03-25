@@ -12,7 +12,7 @@ document.querySelector("#searchForm").addEventListener("submit", (e) => {
   if (inputWordValue.trim() === "") {
     alert("請輸入關鍵字搜尋路名")
   } else {
-    sercherList.textContent = ""
+    sercherList.textContent = "" /*可以放在資料塞進去前 以防使用者沒有輸入成功*/
     getAdressData(bikeApi, inputWordValue)
   }
 })
@@ -21,6 +21,8 @@ document.querySelector("#searchForm").addEventListener("submit", (e) => {
 async function getAdressData(url, keyWordValue) {
   const response = await fetch(url)
   const rawData = await response.json()
+  /* fetch() json() 會回傳 promise 物件，經過 await 才能夠使用*/
+  /* Joson() 成功解析後，就會轉成 JS 可利用的物件，如果解析失敗，會出現錯誤訊息*/
   const includeValue = rawData.filter((data) => {
     return data.ar.includes(keyWordValue)
   })
