@@ -5,7 +5,7 @@
 const actions = {
   attack: function () {
     console.log("ATTACK");
-  },
+  },""
   eat: function () {
     console.log("YAMMY");
   },
